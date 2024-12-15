@@ -7,6 +7,8 @@ const CARD_WIDTH = 100;
 const CARD_HEIGHT = 100;
 const CARD_SPACING = 10;
 
+let startTime = 0; 
+let elapsedTime = 0; 
 let cooldown = false;  // Variável de controle de cooldown
 let currentScreen = 'menu';  // Estado inicial da tela
 let cards = [];
@@ -59,6 +61,9 @@ function shuffle(array) {
 }
 
 function gameLoop() {
+    if (currentScreen === 'game') {
+        elapsedTime = Math.floor((Date.now() - startTime) / 1000); // Tempo decorrido em segundos
+    }
     draw();
     requestAnimationFrame(gameLoop);
 }
@@ -106,7 +111,7 @@ function drawCredits() {
     // Texto centralizado
     const centerX = canvas.width / 2;
     ctx.fillText("Alunos: George Qian, Lorenzo Chaves, Lucas Carlotto e Nicolas Menegat", centerX, 150);
-    ctx.fillText("Professoras orientadoras: Andreia Turchetto e Camille Granada", centerX, 200);
+    ctx.fillText("Professoras orientadoras: Camille Granada e Andreia Turchetto", centerX, 200);
     ctx.fillText("Atividade de extensão da disciplina: BIO07035 - Genética ", centerX, 250);
 
     ctx.fillText("Clique para voltar ao Menu", centerX, canvas.height - 100);
@@ -162,6 +167,10 @@ function drawGame() {
     const gridWidth = GRID_COLS * CARD_WIDTH + (GRID_COLS - 1) * CARD_SPACING;
     const gridHeight = GRID_ROWS * CARD_HEIGHT + (GRID_ROWS - 1) * CARD_SPACING;
 
+    ctx.fillStyle = 'black';
+    ctx.font = '20px Arial';
+    ctx.fillText(`Tempo: ${elapsedTime}s`, 20, 30);
+
     // Calculando a posição (x, y) para centralizar o grid
     const startX = (canvas.width - gridWidth) / 2;
     const startY = (canvas.height - gridHeight) / 2;
@@ -183,21 +192,25 @@ function drawGame() {
 }
 
 function drawVictory() {
-    // Desenhar a mensagem de vitória no centro
+    // Mensagem de vitória
     ctx.fillStyle = 'lightgray';
-    ctx.fillRect(150, 100, canvas.width - 300, 150); // Retângulo de fundo para a mensagem
+    ctx.fillRect(150, 100, canvas.width - 300, 200);
 
     ctx.fillStyle = 'black';
-    ctx.font = '48px Arial'; // Tamanho grande para o texto
-    ctx.textAlign = 'center'; // Alinhar o texto ao centro
-    ctx.fillText("Parabéns você venceu!", canvas.width / 2, 150); // Centraliza a mensagem no meio da tela
+    ctx.font = '36px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText("Parabéns, você venceu!", canvas.width / 2, 150);
 
-    // Desenhar o botão "Voltar ao Menu" no canto inferior central
+    // Exibe o tempo final
+    ctx.font = '24px Arial';
+    ctx.fillText(`Tempo: ${elapsedTime}s`, canvas.width / 2, 200);
+
+    // Botão de voltar ao menu
     ctx.fillStyle = 'lightgray';
-    ctx.fillRect(300, canvas.height - 100, 200, 50); // Botão no canto inferior
+    ctx.fillRect(300, canvas.height - 100, 200, 50);
     ctx.fillStyle = 'black';
-    ctx.font = '20px Arial'; // Tamanho do texto para o botão
-    ctx.fillText("Voltar ao Menu", canvas.width / 2, canvas.height - 70); // Centraliza o texto do botão
+    ctx.font = '20px Arial';
+    ctx.fillText("Voltar ao Menu", canvas.width / 2, canvas.height - 70);
 }
 
 function checkMatch() {
@@ -222,7 +235,7 @@ canvas.addEventListener('click', function (event) {
     if (currentScreen === 'menu') {
         if (x >= 300 && x <= 500) {
             if (y >= 200 && y <= 250) {
-                currentScreen = 'game'; 
+                startGame(); 
             } else if (y >= 270 && y <= 320) {
                 loadSpeciesCards();
             } else if (y >= 340 && y <= 390) {
@@ -264,5 +277,11 @@ canvas.addEventListener('click', function (event) {
         }
     }
 });
+
+function startGame() {
+    startTime = Date.now(); // Salva o momento em que o jogo começa
+    currentScreen = 'game';
+}
+
 
 init();
