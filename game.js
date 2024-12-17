@@ -84,6 +84,7 @@ function draw() {
 }
 
 function drawMenu() {
+    ctx.font = '18px Arial';
     ctx.fillStyle = 'lightgray';
     ctx.fillRect(300, 200, 200, 50);
     ctx.fillStyle = 'black';
