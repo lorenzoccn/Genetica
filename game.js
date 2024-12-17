@@ -84,6 +84,7 @@ function draw() {
 }
 
 function drawMenu() {
+    ctx.textAlign = 'start'
     ctx.font = '18px Arial';
     ctx.fillStyle = 'lightgray';
     ctx.fillRect(300, 200, 200, 50);
@@ -107,7 +108,7 @@ function drawCredits() {
 
     ctx.fillStyle = 'black';
     ctx.font = '18px Arial'; // Reduzir o tamanho da fonte para 18px
-    //ctx.textAlign = 'center'; // Alinhar o texto ao centro
+    ctx.textAlign = 'center'; // Alinhar o texto ao centro
 
     // Texto centralizado
     const centerX = canvas.width / 2;
