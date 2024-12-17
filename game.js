@@ -280,7 +280,8 @@ canvas.addEventListener('click', function (event) {
 });
 
 function startGame() {
-    startTime = Date.now(); // Salva o momento em que o jogo começa
+    resetGame();
+    startTime = Date.now();
     currentScreen = 'game';
 }
 
