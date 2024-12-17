@@ -110,8 +110,9 @@ function drawCredits() {
 
     // Texto centralizado
     const centerX = canvas.width / 2;
-    ctx.fillText("Alunos: George Qian, Lorenzo Chaves, Lucas Carlotto, Lucas Linares e Nicolas Menegat", centerX, 150);
-    ctx.fillText("Professoras orientadoras: Camille Granada e Andreia Turchetto", centerX, 200);
+    ctx.fillText("Alunos: George Qian, Lorenzo Chaves, Lucas Carlotto, Lucas Linares", centerX, 150);
+    ctx.fillText("e Nicolas Menegat", centerX, 200);
+    ctx.fillText("Professoras orientadoras: Camille Granada e Andreia Turchetto", centerX, 250);
     ctx.fillText("Atividade de extensão da disciplina: BIO07035 - Genética ", centerX, 250);
 
     ctx.fillText("Clique para voltar ao Menu", centerX, canvas.height - 100);
