@@ -114,7 +114,7 @@ function drawCredits() {
     ctx.fillText("Alunos: George Qian, Lorenzo Chaves, Lucas Carlotto, Lucas Linares", centerX, 150);
     ctx.fillText("e Nicolas Menegat", centerX, 200);
     ctx.fillText("Professoras orientadoras: Camille Granada e Andreia Turchetto", centerX, 250);
-    ctx.fillText("Atividade de extensão da disciplina: BIO07035 - Genética ", centerX, 250);
+    ctx.fillText("Atividade de extensão da disciplina: BIO07035 - Genética ", centerX, 300);
 
     ctx.fillText("Clique para voltar ao Menu", centerX, canvas.height - 100);
 }
@@ -281,7 +281,7 @@ canvas.addEventListener('click', function (event) {
 });
 
 function startGame() {
-    ctx.font = '18px Arial';
+    ctx.font = '12px Arial';
     resetGame();
     startTime = Date.now();
     currentScreen = 'game';
