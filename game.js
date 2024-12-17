@@ -107,7 +107,7 @@ function drawCredits() {
 
     ctx.fillStyle = 'black';
     ctx.font = '18px Arial'; // Reduzir o tamanho da fonte para 18px
-    ctx.textAlign = 'center'; // Alinhar o texto ao centro
+    //ctx.textAlign = 'center'; // Alinhar o texto ao centro
 
     // Texto centralizado
     const centerX = canvas.width / 2;
@@ -281,7 +281,6 @@ canvas.addEventListener('click', function (event) {
 });
 
 function startGame() {
-    ctx.font = '12px Arial';
     resetGame();
     startTime = Date.now();
     currentScreen = 'game';
