@@ -94,7 +94,7 @@ function drawMenu() {
     ctx.fillStyle = 'lightgray';
     ctx.fillRect(300, 270, 200, 50);
     ctx.fillStyle = 'black';
-    ctx.fillText("Fases", 350, 300);
+    ctx.fillText("Etapas", 350, 300);
 
     ctx.fillStyle = 'lightgray';
     ctx.fillRect(300, 340, 200, 50);
